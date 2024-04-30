@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Whiffs of the Grotesque</title>
+<style>
+  body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; }
+  .tv-image { position: relative; height: 100%; }
+  img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  #container { 
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+  }
+  canvas { 
+    width: 400px; 
+    height: 300px; 
+    background: black; 
+    border: 5px solid #333; 
+  }
+  #controls, #additional-buttons {
+    margin-top: 20px;
+  }
+  button {
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 10px 20px;
+  }
+  .red-hue, .lore-ipsum {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    z-index: 10;
+  }
+  .red-hue { background-color: rgba(255, 0, 0, 0.5); }
+  .lore-ipsum {
+  position: absolute;
+  top: 25%; /* Adjust based on where you want it vertically */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%; /* Ensure it spans the full width to center text properly */
+  text-align: center; /* Ensures the text is centered within the block */
+  font-size: 2em;
+  color: white;
+  z-index: 11;
+  display: none; /* Make sure it's not visible by default */
+  font-family: 'Arial', sans-serif; /* Example: Arial, or any font you prefer */
+
+}
+  @keyframes shake {
+    0% { transform: translate(0px, 0px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-2deg); }
+    20% { transform: translate(-1px, 1px) rotate(2deg); }
+    100% { transform: translate(1px, -2px) rotate(-2deg); }
+  }
+  .shake {
+    animation: shake 0.5s;
+    animation-iteration-count: infinite;
+  }
+
+.popup {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 20; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.popup-content {
+    background-color: #fefefe;
+    margin: 10% auto; /* 10% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 25%; /* Narrower width */
+    height: 5%; /* Taller height */
+    overflow: auto; /* Enable scroll if content is taller */
+    font-family: 'Arial', sans-serif; /* Example: Arial, or any font you prefer */
+}
+
+.close {
+    color: #aaa;
+    float: inline-end;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+</style>
+</head>
+<body>
+<div class="tv-image">
+  <img src="polluted.jpg" alt="Descriptive Image Text">
+  <div id="container">
+    <canvas id="tvStatic"></canvas>
+    <div id="controls">
+      <button id="channelUp">↑</button>
+      <button id="channelDown">↓</button>
+    </div>
+    <div id="additional-buttons">
+      <button id="redShake">Share the air!</button>
+      <button id="orderButton">Order</button> <!-- New order button -->
+    </div>
+  </div>
+  <div class="red-hue"></div>
+  <div class="lore-ipsum">YOU HAVE BREATHED SHARED AIR. I REPEAT, YOU HAVE BREATHED SHARED AIR. THIS IS A SHOCK TO YOUR SYSTEM AND AGAINST OUR WORLD'S LAWS.</div>
+</div>
+
+
+<div id="orderPopup" class="popup">
+    <div class="popup-content">
+        <span class="close">&times;</span>
+        <p id="channelName">Channel Name Here</p>
+    </div>
+<script src="script.js"></script>
+</body>
+</html>
