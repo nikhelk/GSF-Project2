@@ -34,11 +34,10 @@ function displayChannel() {
   ctx.textAlign = "center";
   ctx.fillText(channels[currentChannel], canvas.width / 2, canvas.height / 2);
 
-  // Add the "Grotesque scent for sale!" text at the top left of the canvas
-  ctx.font = "12px Arial"; // Smaller font size for the additional text
-  ctx.fillStyle = "red"; // Red color for the text
-  ctx.textAlign = "left"; // Align text to the left
-  ctx.fillText("Grotesque scent for sale!", 10, 30); // Position the text near the top left
+  ctx.font = "12px Arial";
+  ctx.fillStyle = "red"; 
+  ctx.textAlign = "left";
+  ctx.fillText("Grotesque scent for sale!", 10, 30);
 }
 
 function animateStatic() {
@@ -53,15 +52,14 @@ function animateStatic() {
 
 channelUpButton.addEventListener("click", () => {
   currentChannel = (currentChannel + 1) % channels.length;
-  showStaticUntil = Date.now() + 500; // Show static for 0.5 seconds on channel change
+  showStaticUntil = Date.now() + 500; 
 });
 
 channelDownButton.addEventListener("click", () => {
   currentChannel = (currentChannel - 1 + channels.length) % channels.length;
-  showStaticUntil = Date.now() + 500; // Show static for 0.5 seconds on channel change
+  showStaticUntil = Date.now() + 500; 
 });
 
-// Function to toggle red hue and shake effect
 function toggleRedShake() {
   const body = document.body;
   const redHue =
@@ -86,28 +84,26 @@ function toggleRedShake() {
     redHue.style.display = "none";
     loreIpsum.style.display = "none";
     body.classList.remove("shake");
-  }, 7000); // Duration of shake effect
+  }, 7000);
 }
 
-// Event listener for the red shake button
 const redShakeButton = document.getElementById("redShake");
 redShakeButton.addEventListener("click", toggleRedShake);
 
 function openPopup() {
   const popup = document.getElementById("orderPopup");
-  const channelDescriptionElement = document.getElementById("channelName"); // Consider renaming this ID to 'channelDescription'
-  const currentDescription = channelDescriptions[channels[currentChannel]]; // Get description based on current channel
-  channelDescriptionElement.textContent = currentDescription; // Set the description text
+  const channelDescriptionElement = document.getElementById("channelName"); 
+  const currentDescription = channelDescriptions[channels[currentChannel]]; 
+  channelDescriptionElement.textContent = currentDescription; 
   popup.style.display = "block";
 }
 
-// Function to close the popup
+
 function closePopup() {
   const popup = document.getElementById("orderPopup");
   popup.style.display = "none";
 }
 
-// Add Event Listeners
 const orderButton = document.getElementById("orderButton");
 orderButton.addEventListener("click", openPopup);
 
